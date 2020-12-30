@@ -1,9 +1,9 @@
 # APP_MINIMUNDO
 Aplicativo de compras online
 
-    O aplicativo a ser desenvolvido é um aplicativo simples de cadastro de compras para um pequeno comércio
-    local que está começando a informatizar seu processo de vendas, portanto o aplicativo segue requisitos bem
-    resumidos. Para isso ele deve permitir que o usuário faça o cadastro de clientes, produtos e realize compras.
+   O aplicativo a ser desenvolvido é um aplicativo simples de cadastro de compras para um pequeno comércio
+   local que está começando a informatizar seu processo de vendas, portanto o aplicativo segue requisitos bem
+   resumidos. Para isso ele deve permitir que o usuário faça o cadastro de clientes, produtos e realize compras.
 Tela inicial
     Na tela inicial do aplicativo deve ser mostrado dois labels e um botão para cadastro de compra. Um label irá
     conter o nome do cliente com maior número de compras nos últimos 15 dias, o outro label irá conter o
