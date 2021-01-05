@@ -20,11 +20,12 @@ export const UserName = styled.Text`
   font-size: 18px;
   margin-top: 5px;
   color: #000;
+  font-weight: bold;
 `;
 
 export const UserEmail = styled.Text`
   font-size: 15px;
-  color: #484848;
+  color: #000;
   margin-top: 5px;
 
 `;
