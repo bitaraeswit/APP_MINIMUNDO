@@ -20,12 +20,11 @@ function CustomDrawer({...props}) {
     );
 
    return(
-      <Container>
-        
+      <Container>       
         <UserArea >
-           <Avatar source={user.avatar} />
-           <UserName>{user.name}</UserName>
-           <UserEmail>{user.email}</UserEmail>
+           <Avatar source={user.avatar} />   
+           <UserName>{user.name}</UserName> 
+           <UserEmail>{user.email}</UserEmail>  
          </UserArea>
          
          <DrawerNavigatorItems {...props} /> 

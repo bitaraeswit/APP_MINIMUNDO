@@ -1,12 +1,26 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 
+import {
+  Container,
+  Button,
+  ButtonText
+} from "./styles";
 
 export default function Home (){
   return (
-    <View style = {{flex:1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text style={{fontSize: 35}}>Tela Home</Text>
+    <Container>
 
-    </View>
+    {/*
+      Botão Comprar
+   */}
+      <Button>
+        <TouchableOpacity>
+        <ButtonText>
+              <Text>Comprar</Text>
+        </ButtonText>
+        </TouchableOpacity>
+      </Button>  
+    </Container>
   );
 }

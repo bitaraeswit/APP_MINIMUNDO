@@ -1,6 +1,6 @@
 import styled from "styled-components/native";
 
-
+//Estilização Drawer
 export const Container = styled.SafeAreaView`
   flex: 1;
 `;

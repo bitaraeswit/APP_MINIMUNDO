@@ -3,9 +3,8 @@ import { createAppContainer } from 'react-navigation';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 
 import Home from './pages/Home';
-import Clientes from './pages/Clientes';
-import Produtos from './pages/Produtos';
-import Compras from './pages/Compras';
+import Clientes from './pages/Clientes/ClienteTab';
+import Produtos from './pages/Produtos/ProdutoTab';
 
 import CustomDrawer from './components/CustomDrawer';
 
@@ -13,8 +12,7 @@ const Routes  = createAppContainer(
   createDrawerNavigator ({
     Home,
     Clientes,
-    Produtos,
-    Compras
+    Produtos
   }, {
     initialRouteName: 'Home',
     contentComponent: CustomDrawer
