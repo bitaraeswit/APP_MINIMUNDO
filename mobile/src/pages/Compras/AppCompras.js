@@ -1,13 +1,13 @@
 import React from 'react';
 import {StyleSheet, Text, View, TouchableOpacity, Alert} from 'react-native';
-import StorageCliente from './StorageCliente';
+import StorageCompras from './StorageCompras';
 
-export default function AppClientes(props){
+export default function AppCompras(props){
 
     function handleDeletePress(){ 
         Alert.alert(
             "Atenção",
-            "Você tem certeza que deseja excluir este cliente?",
+            "Você tem certeza que deseja excluir esta compra?",
             [
                 {
                 text: "Não",
@@ -15,8 +15,8 @@ export default function AppClientes(props){
                 style: "cancel"
                 },
                 { text: "Sim", onPress: () => {
-                  StorageCliente.deleteClient(props.id)
-                            .then(response => props.navigation.navigate("ListaClientes", {id: props.id}));
+                  StorageCompras.deleteItem(props.id)
+                            .then(response => props.navigation.navigate("ListaCompras", {id: props.id}));
                     }
                 }
             ],
@@ -25,13 +25,13 @@ export default function AppClientes(props){
     } 
 
     async function handleEditPress(){ 
-        const client = await StorageCliente.getClient(props.id);
-        props.navigation.navigate("CadClientes", client);
+        const item = await StorageCompras.getItem(props.id);
+        props.navigation.navigate("CadCompras", item);
     }
     
     return (
         <View style={styles.container}>
-          <Text style={styles.textClient}>{props.client}</Text>
+          <Text style={styles.textItem}>{props.item}</Text>
           <View style={styles.buttonsContainer}>
             <TouchableOpacity 
                 style={styles.deleteButton}
@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontWeight: 'bold',
     },
-    textClient: {
+    textItem: {
         fontSize: 20,
     }
   });

@@ -1,13 +1,13 @@
 import React from 'react';
 import {StyleSheet, Text, View, TouchableOpacity, Alert} from 'react-native';
-import StorageProduto from './StorageProduto';
+import StorageCliente from '../StorageCliente';
 
-export default function AppProdutos(props){
+export default function AppClientes(props){
 
     function handleDeletePress(){ 
         Alert.alert(
             "Atenção",
-            "Você tem certeza que deseja excluir este produto?",
+            "Você tem certeza que deseja excluir este cliente?",
             [
                 {
                 text: "Não",
@@ -15,8 +15,8 @@ export default function AppProdutos(props){
                 style: "cancel"
                 },
                 { text: "Sim", onPress: () => {
-                  StorageProduto.deleteItem(props.id)
-                            .then(response => props.navigation.navigate("ListaProdutos", {id: props.id}));
+                  StorageCliente.deleteClient(props.id)
+                            .then(response => props.navigation.navigate("ListaClientes", {id: props.id}));
                     }
                 }
             ],
@@ -25,13 +25,13 @@ export default function AppProdutos(props){
     } 
 
     async function handleEditPress(){ 
-        const item = await StorageProduto.getItem(props.id);
-        props.navigation.navigate("CadProdutos", item);
+        const client = await StorageCliente.getClient(props.id);
+        props.navigation.navigate("CadClientes", client);
     }
     
     return (
         <View style={styles.container}>
-          <Text style={styles.textItem}>{props.item}</Text>
+          <Text style={styles.textClient}>{props.client}</Text>
           <View style={styles.buttonsContainer}>
             <TouchableOpacity 
                 style={styles.deleteButton}
@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontWeight: 'bold',
     },
-    textItem: {
+    textClient: {
         fontSize: 20,
     }
   });

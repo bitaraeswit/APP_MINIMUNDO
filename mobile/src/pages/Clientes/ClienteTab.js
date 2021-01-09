@@ -2,8 +2,8 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-import ListaClientes from './ListaClientes';
-import CadClientes from './CadClientes';
+import ListaClientes from './ListaClientes/ListaClientes';
+import CadClientes from './CadClientes/CadClientes';
  
 const {Navigator, Screen} = createBottomTabNavigator();
 

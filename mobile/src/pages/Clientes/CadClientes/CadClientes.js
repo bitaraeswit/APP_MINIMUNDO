@@ -2,7 +2,18 @@ import React, {useState, useEffect} from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, StatusBar } from 'react-native';
 
 //Arquivo que contém as funções do Async Storage do Cliente
-import StorageCliente from './StorageCliente';
+import StorageCliente from '../StorageCliente';
+
+//estilização da página
+import {
+  Container,
+  TextTitle,
+  InputContainer,
+  Input,
+  Button,
+  ButtonContainer,
+  ButtonText
+} from "./styles";
 
 //declaração campos do cadastro de clientes
 export default function CadCliente({ route, navigation }) {
@@ -28,35 +39,34 @@ export default function CadCliente({ route, navigation }) {
   }
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Cadastro de Clientes</Text>
-      <View style={styles.inputContainer}> 
-        <TextInput 
-          style={styles.input} 
+    <Container>
+      <TextTitle>Cadastro de Clientes</TextTitle>
+      <InputContainer> 
+        <Input 
           onChangeText={handleNameChange} 
           placeholder="Nome"
           clearButtonMode="always"
           value={name} /> 
-         <TextInput 
-          style={styles.input} 
+         <Input 
           onChangeText={handleEmailChange} 
           placeholder="Email"
           clearButtonMode="always"
           value={email} /> 
-        <TextInput 
-          style={styles.input} 
+        <Input 
           onChangeText={handleBirthChange} 
-          placeholder="Digite a data de nascimento" 
+          placeholder="Data de nascimento" 
           clearButtonMode="always"
           value={birth} /> 
-          <TouchableOpacity style={styles.button} onPress={handleButtonPress}> 
-            <View style={styles.buttonContainer}>
-              <Text style={styles.buttonText}>Salvar</Text> 
-            </View>
-          </TouchableOpacity> 
-      </View>
+          <Button> 
+            <TouchableOpacity onPress={handleButtonPress}> 
+              <ButtonContainer>
+                <ButtonText>Salvar</ButtonText> 
+              </ButtonContainer>
+            </TouchableOpacity> 
+          </Button>
+      </InputContainer>
       <StatusBar style="light" />
-    </View>
+    </Container>
   );
 }
 

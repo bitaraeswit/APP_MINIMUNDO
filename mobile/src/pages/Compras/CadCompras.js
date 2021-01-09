@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, StatusBar } from 'react-native';
 
-//Arquivo que contém as funções do Async Storage do Produto
-import StorageProduto from './StorageProduto';
-//criação dos estados com os campos do produto
-export default function CadProdutos({ route, navigation }) {
+//Arquivo que contém as funções do Async Storage do Compras
+import StorageCompras from './StorageCompras';
+//criação dos estados com os campos do Compras
+export default function CadCompras({ route, navigation }) {
   const id = route.params ? route.params.id : undefined;
   const [nome, setNome] = useState(''); 
   const [quantidade, setQuantidade] = useState('');
@@ -25,13 +25,13 @@ export default function CadProdutos({ route, navigation }) {
   //salva os itens na lista 
   async function handleButtonPress(){ 
     const listItem = {nome, quantidade: parseInt(quantidade), unidade};
-    StorageProduto.saveItem(listItem, id)
-      .then(response => navigation.navigate("ListaProdutos", listItem));
+    StorageCompras.saveItem(listItem, id)
+      .then(response => navigation.navigate("ListaCompras", listItem));
   }
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Cadastro de Produtos</Text>
+      <Text style={styles.title}>Cadastro de Compras</Text>
       <View style={styles.inputContainer}> 
         <TextInput 
           style={styles.input} 
@@ -42,7 +42,7 @@ export default function CadProdutos({ route, navigation }) {
         <TextInput 
           style={styles.input} 
           onChangeText={handleQuantityChange} 
-          placeholder="Digite a quantidade" 
+          placeholder="Quantidade" 
           keyboardType={'numeric'}
           clearButtonMode="always"
           value={quantidade.toString()} /> 

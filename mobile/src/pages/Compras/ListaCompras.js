@@ -1,24 +1,25 @@
 import React, {useState, useEffect} from 'react';
 import { StyleSheet, View, Text, ScrollView , StatusBar} from 'react-native';
-import AppClientes from './AppClientes';
-import StorageCliente from './StorageCliente';
+import AppCompras from './AppCompras';
+import StorageCompras from './StorageCompras';
  
-export default function ListaClientes({ route, navigation }) {
-  const [clients, setClients] = useState([]);
+export default function ListaCompras({ route, navigation }) {
+  const [items, setItems] = useState([]);
   
+  //busca os do storage na função getItem para exibilos na lista
   useEffect(() => {
-    StorageCliente.getClients().then(clients => setClients(clients));
+    StorageCompras.getItems().then(items => setItems(items));
   }, [route]); 
 
   return (
     <View style={styles.container}>
         <StatusBar style="light" />
-        <Text style={styles.title}>Lista de Clientes</Text>
-        <ScrollView 
+        <Text style={styles.title}>Lista de Compras</Text>
+        <ScrollView //lista dos Compras
             style={styles.scrollContainer}
             contentContainerStyle={styles.itemsContainer}>
-            { clients.map(client => {
-              return <AppClientes key={client.id} id={client.id} client={'Nome: ' + client.name + ' - Email: ' + client.email + ' - Data nascimento: ' + client.birth} navigation={navigation} />
+            { items.map(item => { //map percorre e exibe os itens
+              return <AppCompras key={item.id} id={item.id} item={'Item: '+ item.nome + ' -  Quantidade: ' + item.quantidade + '  - Unidade: ' + item.unidade} navigation={navigation} />
             }) }
         </ScrollView>
     </View>

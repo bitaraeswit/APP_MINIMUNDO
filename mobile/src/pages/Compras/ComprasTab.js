@@ -2,16 +2,16 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-import ListaProdutos from './ListaProdutos/ListaProdutos';
-import CadProdutos from './CadProdutos/CadProdutos';
+import ListaCompras from './ListaCompras';
+import CadCompras from './CadCompras';
  
 const {Navigator, Screen} = createBottomTabNavigator();
-//tab da tela de produtos
-function ProdutoTab(){
+//tab da tela de compras
+function ComprasTab(){
     return (
         <NavigationContainer>
             <Navigator
-                initialRouteName="ListaProdutos"
+                initialRouteName="ListaCompras"
                 tabBarOptions={{
                     style: {
                         elevation: 0,
@@ -33,12 +33,12 @@ function ProdutoTab(){
                     activeTintColor: '#32264d'
                 }}
             >
-                <Screen name="ListaProdutos" component={ListaProdutos}
+                <Screen name="ListaCompras" component={ListaCompras}
                     options={{
-                        tabBarLabel: "Produtos"
+                        tabBarLabel: "Compras"
                     }}
                 />
-                <Screen name="CadProdutos" component={CadProdutos}
+                <Screen name="CadCompras" component={CadCompras}
                     options={{
                         tabBarLabel: "Adicionar"
                     }}
@@ -48,4 +48,4 @@ function ProdutoTab(){
     );
 }
 
-export default ProdutoTab;
+export default ComprasTab;
