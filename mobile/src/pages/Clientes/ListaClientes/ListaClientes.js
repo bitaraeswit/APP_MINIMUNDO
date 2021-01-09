@@ -20,13 +20,12 @@ export default function ListaClientes({ route, navigation }) {
     <Container>
         <StatusBar style="light" />
         <TextTitle >Lista de Clientes</TextTitle>
-        <ScrollView 
-            style={styles.scrollContainer}
+        <ScrollCantainer 
             contentContainerStyle={styles.itemsContainer}>
             { clients.map(client => {
               return <AppClientes key={client.id} id={client.id} client={'Nome: ' + client.name + ' - Email: ' + client.email + ' - Data nascimento: ' + client.birth} navigation={navigation} />
             }) }
-        </ScrollView>
+        </ScrollCantainer>
     </Container>
   );
 }

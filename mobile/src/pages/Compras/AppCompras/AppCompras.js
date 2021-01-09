@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, View, TouchableOpacity, Alert} from 'react-native';
-import StorageCompras from './StorageCompras';
+import StorageCompras from '../StorageCompras';
 
 export default function AppCompras(props){
 

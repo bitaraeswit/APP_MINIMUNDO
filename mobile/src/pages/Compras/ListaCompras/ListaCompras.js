@@ -1,7 +1,15 @@
 import React, {useState, useEffect} from 'react';
 import { StyleSheet, View, Text, ScrollView , StatusBar} from 'react-native';
-import AppCompras from './AppCompras';
-import StorageCompras from './StorageCompras';
+import AppCompras from '../AppCompras/AppCompras';
+import StorageCompras from '../StorageCompras';
+
+//estilização da pagina
+import {
+  Container,
+  TextTitle,
+  ScrollCantainer
+} from "./styles";
+ 
  
 export default function ListaCompras({ route, navigation }) {
   const [items, setItems] = useState([]);
@@ -12,17 +20,16 @@ export default function ListaCompras({ route, navigation }) {
   }, [route]); 
 
   return (
-    <View style={styles.container}>
+    <Container>
         <StatusBar style="light" />
-        <Text style={styles.title}>Lista de Compras</Text>
-        <ScrollView //lista dos Compras
-            style={styles.scrollContainer}
+        <TextTitle style={styles.title}>Lista de Compras</TextTitle>
+        <ScrollCantainer //lista dos Compras
             contentContainerStyle={styles.itemsContainer}>
             { items.map(item => { //map percorre e exibe os itens
               return <AppCompras key={item.id} id={item.id} item={'Item: '+ item.nome + ' -  Quantidade: ' + item.quantidade + '  - Unidade: ' + item.unidade} navigation={navigation} />
             }) }
-        </ScrollView>
-    </View>
+        </ScrollCantainer>
+    </Container>
   );
 }
 

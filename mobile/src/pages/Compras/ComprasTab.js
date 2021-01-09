@@ -2,9 +2,9 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-import ListaCompras from './ListaCompras';
-import CadCompras from './CadCompras';
- 
+import ListaCompras from './ListaCompras/ListaCompras';
+import CadCompras from './CadCompras/CadCompras';
+
 const {Navigator, Screen} = createBottomTabNavigator();
 //tab da tela de compras
 function ComprasTab(){
