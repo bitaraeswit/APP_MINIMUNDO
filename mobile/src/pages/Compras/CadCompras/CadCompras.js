@@ -29,11 +29,11 @@ export default function CadCompras({ route, navigation }) {
   //estados utilizados para salvar os campos da tela de compras
   const [nameClient, setNameClient] = useState(''); 
   const [nameProduct, setNameProduct] = useState('');
-  const [quantityPurchase, setQuantityPurchase] = useState();
-  const [datePurchase, setDatePurchase] = useState ();
-  const [street, setStreet] = useState();
-  const [district, setDistrict] = useState();
-  const [number, setNumber] = useState();
+  const [quantityPurchase, setQuantityPurchase] = useState('');
+  const [datePurchase, setDatePurchase] = useState ('');
+  const [street, setStreet] = useState('');
+  const [district, setDistrict] = useState('');
+  const [number, setNumber] = useState('');
 
   //carrega os clientes cadastrados
   useEffect(() => {
@@ -84,14 +84,14 @@ export default function CadCompras({ route, navigation }) {
       if (p.nome === nameProduct) {
         if (parseInt(p.quantidade) >= quantityPurchase ) {
           const listPurchase = {nameClient, nameProduct, quantityPurchase: parseInt(quantityPurchase), datePurchase, street, district, number};
-          StorageCompras.saveItem(listPurchase, id)
+          StorageCompras.savePurchase(listPurchase, id)
           .then(response => navigation.navigate("ListaCompras", listPurchase));
 
-          // setQuantityPurchase("");
-          // setDatePurchase("");
-          // setStreet("");
-          // setDistrict("");
-          // setNumber("");
+          setQuantityPurchase("");
+          setDatePurchase("");
+          setStreet("");
+          setDistrict("");
+          setNumber("");
 
         }else {
           Alert.alert ("Atenção!", "Quantidade indisponível");

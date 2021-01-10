@@ -26,7 +26,7 @@ export default function AppCompras(props){
                 style: "cancel"
                 },
                 { text: "Sim", onPress: () => {
-                  StorageCompras.deleteItem(props.id)
+                  StorageCompras.deletePurchase(props.id)
                             .then(response => props.navigation.navigate("ListaCompras", {id: props.id}));
                     }
                 }
@@ -36,13 +36,13 @@ export default function AppCompras(props){
     } 
     //busca a compra no storage para editá-la
     async function handleEditPress(){ 
-        const item = await StorageCompras.getItem(props.id);
-        props.navigation.navigate("CadCompras", item);
+        const purchase = await StorageCompras.getPurchase(props.id);
+        props.navigation.navigate("CadCompras", purchase);
     }
     
     return (
         <Container>
-          <TextTitle>{props.item}</TextTitle>
+          <TextTitle>{props.purchase}</TextTitle>
           <ButtonContainer>
             <TouchableOpacity onPress={handleDeletePress}>
               <IconDelete>

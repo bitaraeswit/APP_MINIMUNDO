@@ -13,11 +13,11 @@ import {
  
  
 export default function ListaCompras({ route, navigation }) {
-  const [items, setItems] = useState([]);
+  const [purchases, setPurchases] = useState([]);
   
   //busca os do storage na função getItem para exibilos na lista
   useEffect(() => {
-    StorageCompras.getItems().then(items => setItems(items));
+    StorageCompras.getPurchases().then(purchases => setPurchases(purchases));
   }, [route]); 
 
   return (
@@ -28,8 +28,8 @@ export default function ListaCompras({ route, navigation }) {
         </TextContainer>
         <ScrollContainer> 
           <ScrollView showsVerticalScrollIndicator={false}>
-              { items.map(item => { //map percorre e exibe os itens
-                return <AppCompras key={item.id} id={item.id} item={'Cliente: '+ item.nameClient  + '\n' + 'Produto: ' + item.nameProduct + '\n' + ' Quantidade: ' + item.quantityPurchase + '\n' + ' Data da Compra: ' + item.datePurchase+ '\n' + ' Rua: ' + item.street+ '\n' + ' Bairro: ' + item.district+ '\n' + ' Número: ' + item.number} navigation={navigation} />
+              { purchases.map(purchase => { //map percorre e exibe os itens
+                return <AppCompras key={purchase.id} id={purchase.id} purchase={'Cliente: '+ purchase.nameClient  + '\n' + 'Produto: ' + purchase.nameProduct + '\n' + ' Quantidade: ' + purchase.quantityPurchase + '\n' + ' Data da Compra: ' + purchase.datePurchase+ '\n' + ' Rua: ' + purchase.street+ '\n' + ' Bairro: ' + purchase.district+ '\n' + ' Número: ' + purchase.number} navigation={navigation} />
               }) } 
           </ScrollView>
         </ScrollContainer>

@@ -2,8 +2,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 //Funcão responsável por pegar a lista de compras no storage
-function getItems(){
-  return AsyncStorage.getItem('items').then(response => {
+function getPurchases(){
+  return AsyncStorage.getItem('purchases').then(response => {
       if(response)
         return Promise.resolve(JSON.parse(response));
       else
@@ -12,37 +12,37 @@ function getItems(){
 }
 
 //funcao responsável por pegar uma compra no storage (utilizada na alteração)
-async function getItem(id){
-  const savedItems = await getItems();
-  return savedItems.find(item => item.id === id);
+async function getPurchase(id){
+  const savedPurchases = await getPurchases();
+  return savedPurchases.find(purchase => purchase.id === id);
 }
 
 //funcao salvar compra no storage
-async function saveItem(listPurchase, id){
+async function savePurchase(listPurchase, id){
   listPurchase.id = id ? id : new Date().getTime()
-  const savedItems = await getItems();
+  const savedPurchases = await getPurchases();
   
   if(id){
-    const index = await savedItems.findIndex(item => item.id === id);
-    savedItems[index] = listPurchase;
+    const index = await savedPurchases.findIndex(purchase => purchase.id === id);
+    savedPurchases[index] = listPurchase;
   }
   else
-    savedItems.push(listPurchase);
+  savedPurchases.push(listPurchase);
 
- return AsyncStorage.setItem('items', JSON.stringify(savedItems));
+ return AsyncStorage.setItem('purchases', JSON.stringify(savedPurchases));
 }
 
 //funcao deleta compra no storage
-async function deleteItem(id){
-    let savedItems = await getItems();
-    const index = await savedItems.findIndex(item => item.id === id);
-    savedItems.splice(index, 1);
-    return AsyncStorage.setItem('items', JSON.stringify(savedItems));
+async function deletePurchase(id){
+    let savedPurchases = await getPurchases();
+    const index = await savedPurchases.findIndex(purchase => purchase.id === id);
+    savedPurchases.splice(index, 1);
+    return AsyncStorage.setItem('purchases', JSON.stringify(savedPurchases));
 }
 //exportação das funções a serem utilizadas nas outras páginas
 module.exports = {
-    saveItem,
-    getItems,
-    getItem,
-    deleteItem
+    savePurchase,
+    getPurchases,
+    getPurchase,
+    deletePurchase
 }
