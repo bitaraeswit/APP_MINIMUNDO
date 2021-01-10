@@ -1,10 +1,9 @@
 import React from 'react';
 
-import Routes from './Routes/DrawerNavigation';
+import StackNavigation from  './Routes/StackNavigation';
 
 export default function App() {
   return (
-  
-      <Routes />
+      <StackNavigation />
   );
 }

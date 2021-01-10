@@ -1,12 +1,13 @@
 import React, {useState, useEffect} from 'react';
-import { StyleSheet, View, Text, ScrollView , StatusBar} from 'react-native';
+import { ScrollView, StatusBar} from 'react-native';
 import AppClientes from '../AppClientes/AppClientes';
 import StorageCliente from '../StorageCliente';
 
 import {
   Container,
+  TextContainer,
   TextTitle,
-  ScrollCantainer
+  ScrollContainer,
 } from "./styles";
  
 export default function ListaClientes({ route, navigation }) {
@@ -19,25 +20,18 @@ export default function ListaClientes({ route, navigation }) {
   return (
     <Container>
         <StatusBar style="light" />
-        <TextTitle >Lista de Clientes</TextTitle>
-        <ScrollCantainer 
-            contentContainerStyle={styles.itemsContainer}>
-            { clients.map(client => {
-              return <AppClientes key={client.id} id={client.id} client={'Nome: ' + client.name + ' - Email: ' + client.email + ' - Data nascimento: ' + client.birth} navigation={navigation} />
-            }) }
-        </ScrollCantainer>
+        <TextContainer>
+          <TextTitle>Lista de Clientes</TextTitle>
+        </TextContainer>
+        <ScrollContainer>
+          <ScrollView showsVerticalScrollIndicator={false}>
+            { 
+              clients.map(client => (
+                  <AppClientes key={client.id} id={client.id} client={'Nome: ' + client.name + "\n"+'Email: ' + client.email+"\n"+'Data nascimento: ' + client.birth} navigation={navigation} />
+              )) 
+            }
+          </ScrollView>
+        </ScrollContainer>
     </Container>
   );
 }
-
-const styles = StyleSheet.create({
-  itemsContainer: {
-    flex: 1,
-    marginTop: 10,
-    padding: 20,
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
-    alignItems: 'stretch',
-    backgroundColor: '#fff'
-  },
-});

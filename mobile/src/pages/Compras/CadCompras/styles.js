@@ -7,22 +7,28 @@ export const Container = styled.View`
   align-items: center;
 `;
 
+export const TextContainer = styled.View`
+  width: 100%;
+  height: 10%;
+  align-items: center;
+  justify-content: center;
+  background-color: #3299CC;
+`;
+
 export const TextTitle = styled.Text `
   color: #fff;
   font-size: 20px;
   font-weight: bold;
-  margin-top: 50px;
-  margin-bottom: 20px;
 `;
 
 export const InputContainer = styled.View `
   flex: 1;
-  margin-top: 30px;
   width: 90%;
   padding: 20px;
   align-items: stretch;
   background-color: #fff;
-
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 `;
 
 export const Input = styled.TextInput `
@@ -33,7 +39,6 @@ export const Input = styled.TextInput `
   padding-horizontal: 24px;
   font-size: 16px;
   align-items: stretch;
-
 `;
 
 export const Button = styled(RectButton) `

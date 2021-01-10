@@ -2,14 +2,15 @@ import React from 'react';
 import { TouchableOpacity, Alert} from 'react-native';
 import StorageProduto from '../StorageProduto';
 
+import Icon from 'react-native-vector-icons/Feather';
+
 //estilização da página
 import {
   Container,
   TextTitle,
-  DeleteButton,
-  EditButton,
   ButtonContainer,
-  ButtonText
+  IconDelete,
+  IconEdit
 } from "./styles";
 
 
@@ -34,7 +35,7 @@ export default function AppProdutos(props){
             { cancelable: false }
             );
     } 
-
+    //busca o produto no storage para editá-lo
     async function handleEditPress(){ 
         const item = await StorageProduto.getItem(props.id);
         props.navigation.navigate("CadProdutos", item);
@@ -44,16 +45,16 @@ export default function AppProdutos(props){
         <Container>
           <TextTitle>{props.item}</TextTitle>
           <ButtonContainer>
-            <DeleteButton>
               <TouchableOpacity onPress={handleDeletePress}>
-                <ButtonText>X</ButtonText>
+                <IconDelete>
+                  <Icon name="x-octagon" size={25} color="#fff"/>
+                </IconDelete>
               </TouchableOpacity> 
-            </DeleteButton>
-            <EditButton>
               <TouchableOpacity onPress={handleEditPress}>
-                <ButtonText>Y</ButtonText>
+                <IconEdit>
+                    <Icon name="edit" size={25} color="#fff"/>
+                </IconEdit>
               </TouchableOpacity> 
-            </EditButton>
           </ButtonContainer>
         </Container>
       );

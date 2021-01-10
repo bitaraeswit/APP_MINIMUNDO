@@ -1,5 +1,4 @@
 import styled from "styled-components/native";
-import { RectButton } from 'react-native-gesture-handler';
 
 export const Container = styled.View`
     background-color: #fff;
@@ -19,36 +18,21 @@ export const ButtonContainer = styled.View `
   margin-top: 10px;
 `;
 
-export const DeleteButton = styled(RectButton) `
-  margin-left: 10px;
-  height: 40px;
+export const IconEdit = styled.View`
+  background-color: blue;
   width: 40px;
-  background-color: red;
+  height: 40px;
   border-radius: 10px;
-  padding: 10px;
-  font-size: 12px;
-  elevation: 10px;
-  shadow-opacity: 10px;
-  shadow-color: #ccc;
   align-items: center;
+  justify-content: center;
+  margin-right: 5px;
 `;
 
-export const EditButton = styled(RectButton) `
-    margin-left: 10px;
-    height: 40px;
-    background-color: blue;
-    border-radius: 10px;
-    padding: 10px;
-    font-size: 12px;
-    elevation: 10px;
-    shadow-opacity: 10px;
-    shadow-color: #ccc;
-    align-items: center;
-
-`;
-
-export const ButtonText = styled.Text `
-  color: #fff;
-  font-weight: bold;
-
+export const IconDelete = styled.View`
+  background-color: red;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
 `;

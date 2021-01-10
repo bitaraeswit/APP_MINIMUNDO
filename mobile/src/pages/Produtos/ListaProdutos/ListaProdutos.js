@@ -1,13 +1,14 @@
 import React, {useState, useEffect} from 'react';
-import { StyleSheet, View, Text, ScrollView , StatusBar} from 'react-native';
+import {ScrollView , StatusBar} from 'react-native';
 import AppProdutos from '../AppProduto/AppProdutos';
 import StorageProduto from '../StorageProduto';
 
 //estilização da pagina
 import {
   Container,
+  TextContainer,
   TextTitle,
-  ScrollCantainer
+  ScrollContainer
 } from "./styles";
  
 export default function ListaProdutos({ route, navigation }) {
@@ -21,26 +22,16 @@ export default function ListaProdutos({ route, navigation }) {
   return (
     <Container>
         <StatusBar style="light" />
-        <TextTitle>Lista de Produtos</TextTitle>
-          <ScrollCantainer //lista dos produtos
-              contentContainerStyle={styles.itemsContainer}>
+        <TextContainer>
+          <TextTitle>Lista de Produtos</TextTitle>
+        </TextContainer>
+          <ScrollContainer>
+            <ScrollView showsVerticalScrollIndicator={false}>
               { items.map(item => { //map percorre e exibe os itens
-                return <AppProdutos key={item.id} id={item.id} item={'Item: '+ item.nome + ' -  Quantidade: ' + item.quantidade + '  - Unidade: ' + item.unidade} navigation={navigation} />
-              }) }
-              
-          </ScrollCantainer>
+                return <AppProdutos key={item.id} id={item.id} item={'Item: '+ item.nome+"\n" + 'Quantidade: ' + item.quantidade+"\n" + 'Unidade: ' + item.unidade} navigation={navigation} />
+              }) }    
+            </ScrollView>
+          </ScrollContainer>  
     </Container>
   );
 }
-
-const styles = StyleSheet.create({
-  itemsContainer: {
-    flex: 1,
-    marginTop: 10,
-    padding: 20,
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
-    alignItems: 'stretch',
-    backgroundColor: '#fff'
-  },
-});

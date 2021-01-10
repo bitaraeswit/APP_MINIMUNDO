@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { useNavigation } from "@react-navigation/native";
 
 import {
   Container,
@@ -8,18 +8,17 @@ import {
 } from "./styles";
 
 export default function Home (){
+  const nav = useNavigation();
+
   return (
     <Container>
-
-    {/*
-      Botão Comprar
-   */}
-      <Button>
-        <TouchableOpacity>
+      <Button onPress={() => {
+       nav.navigate('CadCompras');
+     }}
+      >
         <ButtonText>
-              <Text>Comprar</Text>
+              Cadastro de Compras
         </ButtonText>
-        </TouchableOpacity>
       </Button>  
     </Container>
   );

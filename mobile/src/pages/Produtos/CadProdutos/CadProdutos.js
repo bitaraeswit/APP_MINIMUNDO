@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { TouchableOpacity, StatusBar } from 'react-native';
+import { StatusBar } from 'react-native';
 
 //Arquivo que contém as funções do Async Storage do Produto
 import StorageProduto from '../StorageProduto';
@@ -7,6 +7,7 @@ import StorageProduto from '../StorageProduto';
 //estilização da página
 import {
   Container,
+  TextContainer,
   TextTitle,
   InputContainer,
   Input,
@@ -30,20 +31,33 @@ export default function CadProdutos({ route, navigation }) {
   }, [route])
 
   //pega os campos digitados nos inputs
-  function handleNameChange(nome){ setNome(nome); } 
-  function handleQuantityChange(quantidade){ setQuantidade(quantidade); }
-  function handleUnitChange(unidade){ setUnidade(unidade); }
+  function handleNameChange(nome){ 
+    setNome(nome); 
+  } 
+  function handleQuantityChange(quantidade){ 
+    setQuantidade(quantidade); 
+  }
+  function handleUnitChange(unidade){ 
+    setUnidade(unidade); 
+  }
 
   //salva os itens na lista 
   async function handleButtonPress(){ 
     const listItem = {nome, quantidade: parseInt(quantidade), unidade};
     StorageProduto.saveItem(listItem, id)
       .then(response => navigation.navigate("ListaProdutos", listItem));
+
+    //limpa os campos após salvar
+    setNome("");
+    setQuantidade("");
+    setUnidade("");
   }
 
   return (
     <Container>
-      <TextTitle>Cadastro de Produtos</TextTitle>
+      <TextContainer>
+        <TextTitle>Cadastro de Produtos</TextTitle>
+      </TextContainer>
       <InputContainer> 
         <Input 
           onChangeText={handleNameChange} 
@@ -61,16 +75,13 @@ export default function CadProdutos({ route, navigation }) {
           placeholder="Unidade"
           clearButtonMode="always"
           value={unidade} />  
-          <Button> 
-            <TouchableOpacity onPress={handleButtonPress}> 
+          <Button onPress={handleButtonPress}> 
               <ButtonContainer>
                 <ButtonText>Salvar</ButtonText> 
               </ButtonContainer>
-            </TouchableOpacity> 
           </Button>
       </InputContainer>
       <StatusBar style="light" />
     </Container>
   );
 }
-

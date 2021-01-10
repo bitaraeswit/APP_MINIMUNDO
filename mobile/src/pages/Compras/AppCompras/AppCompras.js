@@ -1,9 +1,20 @@
 import React from 'react';
-import {StyleSheet, Text, View, TouchableOpacity, Alert} from 'react-native';
+import { TouchableOpacity, Alert} from 'react-native';
 import StorageCompras from '../StorageCompras';
 
-export default function AppCompras(props){
+import Icon from 'react-native-vector-icons/Feather';
 
+//estilização da página
+import {
+  Container,
+  TextTitle,
+  ButtonContainer,
+  IconDelete,
+  IconEdit
+} from "./styles";
+
+export default function AppCompras(props){
+    //verifica se o usuário deseja mesmo excluir a compra
     function handleDeletePress(){ 
         Alert.alert(
             "Atenção",
@@ -23,75 +34,27 @@ export default function AppCompras(props){
             { cancelable: false }
             );
     } 
-
+    //busca a compra no storage para editá-la
     async function handleEditPress(){ 
         const item = await StorageCompras.getItem(props.id);
         props.navigation.navigate("CadCompras", item);
     }
     
     return (
-        <View style={styles.container}>
-          <Text style={styles.textItem}>{props.item}</Text>
-          <View style={styles.buttonsContainer}>
-            <TouchableOpacity 
-                style={styles.deleteButton}
-                onPress={handleDeletePress}>
-                  <Text>X</Text>
+        <Container>
+          <TextTitle>{props.item}</TextTitle>
+          <ButtonContainer>
+            <TouchableOpacity onPress={handleDeletePress}>
+              <IconDelete>
+                  <Icon name="x-octagon" size={25} color="#fff"/>
+               </IconDelete>
             </TouchableOpacity> 
-            <TouchableOpacity 
-                style={styles.editButton} 
-                onPress={handleEditPress}>
-                  <Text>Y</Text>
+            <TouchableOpacity onPress={handleEditPress}>
+                <IconEdit>
+                    <Icon name="edit" size={25} color="#fff"/>
+                </IconEdit>
             </TouchableOpacity> 
-          </View>
-        </View>
+          </ButtonContainer>
+        </Container>
       );
 }
-
-const styles = StyleSheet.create({
-    container: {
-      backgroundColor: '#fff',
-      marginTop: 20,
-      width: '100%'
-    },
-    buttonsContainer: {
-        flexDirection: 'row-reverse',
-        alignItems: 'flex-end',
-        borderBottomWidth: 1,
-        borderBottomColor: '#CCC',
-        paddingBottom: 10,
-        marginTop: 10,
-    },
-    editButton: {
-        marginLeft: 10,
-        height: 40,
-        backgroundColor: 'blue',
-        borderRadius: 10,
-        padding: 10,
-        fontSize: 12,
-        elevation: 10,
-        shadowOpacity: 10,
-        shadowColor: '#ccc',
-        alignItems: 'center'
-    },
-    deleteButton: {
-        marginLeft: 10,
-        height: 40,
-        width: 40,
-        backgroundColor: 'red',
-        borderRadius: 10,
-        padding: 10,
-        fontSize: 12,
-        elevation: 10,
-        shadowOpacity: 10,
-        shadowColor: '#ccc',
-        alignItems: 'center'
-    },
-    buttonText: {
-        color: '#fff',
-        fontWeight: 'bold',
-    },
-    textItem: {
-        fontSize: 20,
-    }
-  });

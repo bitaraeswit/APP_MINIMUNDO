@@ -1,5 +1,4 @@
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import ListaCompras from './ListaCompras/ListaCompras';
@@ -9,7 +8,6 @@ const {Navigator, Screen} = createBottomTabNavigator();
 //tab da tela de compras
 function ComprasTab(){
     return (
-        <NavigationContainer>
             <Navigator
                 initialRouteName="ListaCompras"
                 tabBarOptions={{
@@ -44,7 +42,6 @@ function ComprasTab(){
                     }}
                 />
             </Navigator>
-        </NavigationContainer>
     );
 }
 

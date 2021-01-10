@@ -1,5 +1,4 @@
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import ListaProdutos from './ListaProdutos/ListaProdutos';
@@ -9,7 +8,6 @@ const {Navigator, Screen} = createBottomTabNavigator();
 //tab da tela de produtos
 function ProdutoTab(){
     return (
-        <NavigationContainer>
             <Navigator
                 initialRouteName="ListaProdutos"
                 tabBarOptions={{
@@ -44,7 +42,6 @@ function ProdutoTab(){
                     }}
                 />
             </Navigator>
-        </NavigationContainer>
     );
 }
 
