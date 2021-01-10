@@ -26,7 +26,7 @@ export const InputContainer = styled.View `
   width: 90%;
   padding: 20px;
   align-items: stretch;
-  background-color: #fff;
+  background-color: #f5f5f5;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 `;
