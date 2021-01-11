@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { StatusBar } from 'react-native';
+import { Picker } from "@react-native-picker/picker";
 
 //Arquivo que contém as funções do Async Storage do Produto
 import StorageProduto from '../StorageProduto';
@@ -22,7 +23,10 @@ export default function CadProdutos({ route, navigation }) {
   const [nome, setNome] = useState(''); 
   const [quantidade, setQuantidade] = useState('');
   const [unidade, setUnidade] = useState('');
+  const [categoriaProd, setCategoriaProd] = useState("Frios" );
 
+
+  //carrega os produtos 
   useEffect(() => {
     if(!route.params) return;
     setNome(route.params.nome);
@@ -43,7 +47,7 @@ export default function CadProdutos({ route, navigation }) {
 
   //salva os itens na lista 
   async function handleButtonPress(){ 
-    const listItem = {nome, quantidade: parseInt(quantidade), unidade};
+    const listItem = {nome, quantidade: parseInt(quantidade), unidade, categoriaProd};
     StorageProduto.saveItem(listItem, id)
       .then(response => navigation.navigate("ListaProdutos", listItem));
 
@@ -58,7 +62,23 @@ export default function CadProdutos({ route, navigation }) {
       <TextContainer>
         <TextTitle>Cadastro de Produtos</TextTitle>
       </TextContainer>
-      <InputContainer> 
+      <InputContainer>
+        <Picker
+          prompt="Categoria Produto"
+          itemStyle={{
+            fontSize: 16,
+            color: "#696969",
+            alignItems: "center"
+          }}
+          selectedValue={categoriaProd}
+          onValueChange={ (itemValue, itemIndex) => setCategoriaProd(itemValue)}
+        >
+          <Picker.Item key={1} value="Frios"          label="Frios"  />
+          <Picker.Item key={2} value="Higiene Pessoal"label="Higiene Pessoal"  />
+          <Picker.Item key={3} value="Grãos"          label="Grãos"  />
+          <Picker.Item key={4} value="Vestuário"      label="Vestuário"  />
+        </Picker>
+
         <Input 
           onChangeText={handleNameChange} 
           placeholder="Nome"

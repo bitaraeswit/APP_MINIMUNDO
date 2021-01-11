@@ -28,7 +28,7 @@ export default function ListaProdutos({ route, navigation }) {
           <ScrollContainer>
             <ScrollView showsVerticalScrollIndicator={false}>
               { items.map(item => { //map percorre e exibe os itens
-                return <AppProdutos key={item.id} id={item.id} item={'Item: '+ item.nome+"\n" + 'Quantidade: ' + item.quantidade+"\n" + 'Unidade: ' + item.unidade} navigation={navigation} />
+                return <AppProdutos key={item.id} id={item.id} item={'Categoria: ' + item.categoriaProd +"\n" + 'Item: '+ item.nome+"\n" + 'Quantidade: ' + item.quantidade +"\n" + 'Unidade: ' + item.unidade } navigation={navigation} />
               }) }    
             </ScrollView>
           </ScrollContainer>  

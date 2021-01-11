@@ -5,8 +5,6 @@ import Home from '../../pages/Home';
 import Clientes from '../../pages/Clientes/ClienteTab';
 import Produtos from '../../pages/Produtos/ProdutoTab';
 
-import CustomDrawer from '../../components/CustomDrawer';
-
 const Drawer = createDrawerNavigator();
 
 const Routes = () => {
